@@ -44,4 +44,18 @@ public class BookController {
         System.out.println(book.toString());
         memoryBookService.addBookToList(book);
     }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void updateBookInTheList(@RequestBody Book book,@PathVariable long id){
+        memoryBookService.updateBookById(id,book);
+        System.out.println("book updated");
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteBookInTheList(@PathVariable long id){
+        memoryBookService.removeBookById(id);
+        System.out.println("book updated");
+    }
 }
