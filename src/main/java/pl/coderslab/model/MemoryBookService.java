@@ -1,5 +1,6 @@
 package pl.coderslab.model;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.Comparator;
 import java.util.List;
 
 @Component
-public class MemoryBookService {
+@Primary
+public class MemoryBookService implements BookService{
 
     private List<Book> bookList;
 
