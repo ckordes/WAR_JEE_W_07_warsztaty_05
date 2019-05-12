@@ -2,10 +2,7 @@ package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Book;
 import pl.coderslab.model.MemoryBookService;
 
@@ -29,10 +26,22 @@ public class BookController {
                 "Bruce Eckel","Helion","programming");
     }
 
-    @GetMapping("/get")
+    @GetMapping("/")
     @ResponseStatus(value = HttpStatus.OK)
     public List<Book> getBookList(){
         return memoryBookService.getBookList();
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public Book getBookById( @PathVariable long id){
+        return memoryBookService.getBookById(id);
+    }
+
+    @PostMapping("/")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void addBookToList(@RequestBody Book book){
+        System.out.println(book.toString());
+        memoryBookService.addBookToList(book);
+    }
 }

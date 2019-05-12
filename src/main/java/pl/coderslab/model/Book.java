@@ -17,6 +17,9 @@ public class Book {
         this.type = type;
     }
 
+    public Book() {
+    }
+
     public long getId() {
         return id;
     }
